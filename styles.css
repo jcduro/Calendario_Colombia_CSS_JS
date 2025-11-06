@@ -1,0 +1,416 @@
+/* ------------------------------------------------------------------------------------------------
+
+      _  _____ _____  _    _ _____   ____  
+     | |/ ____|  __ \| |  | |  __ \ / __ \ 
+     | | |    | |  | | |  | | |__) | |  | |
+ _   | | |    | |  | | |  | |  _  /| |  | |
+| |__| | |____| |__| | |__| | | \ \| |__| |
+ \____/ \_____|_____/ \____/|_|  \_\\____/ 
+                                           
+                                           
+
+------------------------------------------------------------------------------------------------ */
+
+
+:root {
+    --bg: #0f1724;
+    --card: rgba(255, 255, 255, 0.06);
+    --accent: #1dd1a1;
+    --weekend: rgba(9, 185, 255, 0.2);
+    --holiday: rgba(233, 255, 30, 0.3);
+    --today-border: 2px solid #fa07ee;
+    --tooltip-bg: rgba(8, 56, 247, 0.5);
+    --tooltip-color: #e8f7ff;
+    --mirror: rgba(255, 255, 255, 0.1);
+    /* color del brillo/neón */
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Raleway, Inter, system-ui, Segoe UI, Arial;
+    background: var(--bg);
+    color: #e6eef8;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px;
+
+    /* Ya NO pongas background-image aquí */
+    /* Deja solo si quieres transiciones suaves */
+    transition: background-image 0.8s ease-in-out;
+}
+
+
+.calendar-app {
+    width: 100%;
+    max-width: 1100px;
+    padding: 16px;
+    margin: auto;
+    text-align: center;
+}
+
+
+
+.cal-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px
+}
+
+.cal-header .title {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+#calMain {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    overflow: visible
+}
+
+table.calendar {
+    width: 100%;
+    border-collapse: collapse
+}
+
+.calendar th {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border: 1px solid rgba(255, 254, 254, 0.2);
+    color: #cbe6ff;
+    font-weight: 600
+}
+
+.calendar td {
+    height: 50px;
+    border: 1px solid rgba(255, 254, 254, 0.2);
+    padding: 8px;
+    border-radius: 8px;
+    vertical-align: top;
+    position: relative
+}
+
+.calendar td:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+}
+
+.calendar td .daynum {
+    font-weight: 700;
+}
+
+.calendar td.weekend {
+    background: var(--weekend)
+}
+
+.calendar td.holiday {
+    background: var(--holiday)
+}
+
+.calendar td.today {
+    outline: var(--today-border);
+    background: linear-gradient(90deg, rgba(204, 26, 240, 0.171), rgba(255, 255, 255, 0.01))
+}
+
+@media (max-width:520px) {
+    .calendar td {
+        height: 64px;
+        padding: 4px;
+        font-size: 13px
+    }
+}
+
+/* simple controls styling */
+button {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.959);
+    color: inherit;
+    padding: 6px 10px;
+    cursor: pointer
+}
+
+.title select,
+.title input {
+    padding: 6px 8px;
+    background: var(--card);
+    padding: 12px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.959);
+    color: inherit
+}
+
+/* Estilo general del select */
+select {
+    background-color: var(--card);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.959);
+    color: inherit;
+    /* Color del texto */
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Estilo de las opciones */
+option {
+    background-color: rgba(70, 64, 64, .5);
+    color: #fff;
+    /* Color del texto */
+}
+
+/* Puedes añadir un hover en navegadores que lo soporten */
+option:hover {
+    background-color: #555;
+}
+
+/* holiday indicator (small dot) */
+.calendar td.holiday::before {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #4db8ff, #1e90ff);
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.6);
+}
+
+/* tooltip with full explanation on hover */
+.calendar td.holiday::after {
+    content: attr(data-holiday);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    bottom: calc(100% + 8px);
+    max-width: 320px;
+    background: var(--tooltip-bg);
+    color: var(--tooltip-color);
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    white-space: normal;
+    line-height: 1.2;
+    text-align: left;
+    z-index: 999;
+    transition: opacity .12s ease, transform .12s ease;
+    transform-origin: bottom center;
+    display: block;
+}
+
+.calendar td.holiday:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+
+.month {
+    position: relative;
+    padding: 12px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
+    overflow: visible;
+
+    /* ---- AÑADIDO: borde y sombra ---- */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+    /* ligera elevación en hover (opcional) */
+    transition: box-shadow .24s ease, transform .18s ease;
+}
+
+
+/* Borde neón animado */
+.month::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* cubre todo el contenedor */
+    border-radius: 20px;
+    padding: 2px;
+    /* grosor del borde */
+    background: linear-gradient(120deg,
+            transparent 0%,
+            var(--mirror) 50%,
+            transparent 100%);
+    background-size: 200% 200%;
+    filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+
+    /* ---- AÑADIDO: borde y sombra ---- */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+    /* ligera elevación en hover (opcional) */
+    transition: box-shadow .24s ease, transform .18s ease;
+}
+
+
+/* Animación al hacer hover */
+.month:hover::before {
+    opacity: 10;
+    animation: mirror 0.8s linear forwards;
+}
+
+/* Animación del brillo recorriendo el borde */
+@keyframes mirror {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+/* ...existing code... */
+
+/* Previews debajo del mes principal */
+.month-previews {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 18px;
+    align-items: flex-start;
+}
+
+/* estilo para cada preview (más pequeño que el mes principal) */
+.month.preview {
+    width: calc(50% - 10px);
+    padding: 10px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transform-origin: center top;
+    transition: transform .18s ease, box-shadow .18s ease;
+    cursor: pointer;
+}
+
+/* efecto al pasar: ligero pop */
+.month.preview:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.5);
+}
+
+/* estilos reducidos para la tabla mini */
+.month.preview table.calendar th {
+    font-size: 0.72em;
+    padding: 6px;
+}
+
+.month.preview table.calendar td {
+    height: 36px;
+    line-height: 36px;
+    font-size: 0.85em;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.month.preview table.calendar td .daynum {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+/* ocultar decoraciones grandes del main cuando es preview */
+.month.preview::before {
+    filter: blur(4px);
+    opacity: .6;
+}
+
+.month.preview h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--holiday-color);
+}
+
+/* responsive: en móviles apilar previews */
+@media (max-width: 520px) {
+    .month-previews {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .month.preview {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .calendar th,
+    .calendar td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .calendar td {
+        height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .calendar th,
+    .calendar td {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .calendar td {
+        height: 42px;
+    }
+
+    .cal-header select,
+    .cal-header input,
+    button {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .month-previews {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .month.preview {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+
+
+/* prevent tooltip clipping by overflow on ancestor */
+.calendar,
+#calMain {
+    overflow: visible;
+}
+
+.holiday label {
+    display: block;
+    font-size: 12px;
+    margin-top: 6px;
+    color: #e8f7ff
+}

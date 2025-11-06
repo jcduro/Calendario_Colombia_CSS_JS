@@ -1,0 +1,48 @@
+<!-- JCDURO  ------------------------------------------------------------------------------------------------
+
+      _  _____ _____  _    _ _____   ____  
+     | |/ ____|  __ \| |  | |  __ \ / __ \ 
+     | | |    | |  | | |  | | |__) | |  | |
+ _   | | |    | |  | | |  | |  _  /| |  | |
+| |__| | |____| |__| | |__| | | \ \| |__| |
+ \____/ \_____|_____/ \____/|_|  \_\\____/ 
+                                           
+                                           
+
+------------------------------------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendario Colombia — Pure CSS + JS</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="calendar-app" id="app">
+    <header class="cal-header">
+      <button id="prevYear" title="Año anterior">«</button>
+      <button id="prevMonth" title="Mes anterior">‹</button>
+      <div class="title">
+        <select id="monthSelect" aria-label="Mes"></select>
+        <input id="yearInput" type="number" min="1900" max="2100" aria-label="Año">
+      </div>
+      <button id="nextMonth" title="Mes siguiente">›</button>
+      <button id="nextYear" title="Siguiente año">»</button>
+    </header>
+
+    <main id="calMain" role="main" aria-live="polite">
+      <!-- tabla del mes se genera aquí -->
+    </main>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
