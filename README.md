@@ -16,7 +16,7 @@ Calendario interactivo de Colombia que muestra los días, meses y festivos nacio
 
 ✨ Pruevalo Online
 
-[Maquetacion_Web](https://jcduro.bexartideas.com/proyectos/calendar_full/index.html)
+[Calendario_Colombia](https://jcduro.bexartideas.com/proyectos/calendar_full/index.html)
 
 --- 
 
