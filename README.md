@@ -1,33 +1,33 @@
-📅 Calendario Colombia — Pure CSS + JS
+## 📅 Calendario Colombia — Pure CSS + JS
 
 ---
 
-🚀  Descripción
+## 🚀  Descripción
 
 Calendario interactivo de Colombia que muestra los días, meses y festivos nacionales, desarrollado 100% con CSS puro y JavaScript (sin dependencias externas). Ideal para aprender, modificar y utilizar en proyectos web educativos o personales.
 
 ---
 
-🖼️ Vista previa
+## 🖼️ Vista previa
 
 ![Colombian_Calendar](preview.gif)
 
 --- 
 
-✨ Pruebalo Online
+## ✨ Pruebalo Online
 
 [Calendario_Colombia](https://jcduro.bexartideas.com/proyectos/dashjc/calendar_full/calendar.php)
 
 --- 
 
-📊 Lenguajes y Herramientas
+## 📊 Lenguajes y Herramientas
 
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,github,vscode,windows,&theme=light&perline=8)](https://skillicons.dev)
 
 
 ---
 
-🚀 Características principales
+## 🚀 Características principales
 
 
 - Cambio de fondos con Imágenes según el mes en que está
@@ -40,7 +40,7 @@ Calendario interactivo de Colombia que muestra los días, meses y festivos nacio
 
 ---
 
-🧩 Componentes del proyecto
+## 🧩 Componentes del proyecto
 
 - Controles superiores
 - Flechas de navegación (« y »)
@@ -59,7 +59,7 @@ Calendario interactivo de Colombia que muestra los días, meses y festivos nacio
 
 ---
 
-📦 Estructura de Archivos
+## 📦 Estructura de Archivos
 
 - calendar2.html — HTML principal con el calendario y enlaces a CSS/JS.
 - (Opcional) styles.css — Hojas de estilo (si lo tienes aparte).
@@ -67,7 +67,7 @@ Calendario interactivo de Colombia que muestra los días, meses y festivos nacio
 
 ---
 
-🔧 Instalación y uso
+## 🔧 Instalación y uso
 
 Clona o descarga el repositorio.
 Abre el archivo calendar2.html en tu navegador preferido.
@@ -75,14 +75,14 @@ Usa los controles para navegar entre meses y años; explora los días festivos d
 
 ---
 
-✨ Personalización
+## ✨ Personalización
 
 Agregar/editar festivos: Modifica la lista de días festivos en el archivo JS para incluir eventos regionales o personales.
 Cambiar estilos: Ajusta la hoja de estilos CSS para personalizar colores y efectos visuales.
 
 ---
 
-📝 Créditos
+## 📝 Créditos
 
 Desarrollado por JcDuro
 Inspirado en la cultura y calendario colombiano 🇨🇴
