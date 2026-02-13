@@ -82,9 +82,15 @@ Cambiar estilos: Ajusta la hoja de estilos CSS para personalizar colores y efect
 
 ---
 
-## 📝 Créditos
 
-Desarrollado por JcDuro
-Inspirado en la cultura y calendario colombiano 🇨🇴
+--- 
 
-﻿
+## 📄 Licencia
+Libre, usalo como quieras
+<div align="center">
+  Hecho con 💙 y neones
+</div>
+
+---
+
+## ⭐ Si te gustó este proyecto, no olvides dejar una estrella en GitHub!﻿
